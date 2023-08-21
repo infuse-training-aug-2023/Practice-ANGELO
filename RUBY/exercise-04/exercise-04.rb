@@ -19,10 +19,10 @@ class Exercise
   end
 end
 
-sports = ["Cricket", "TT", "Football", "Hockey"]
+# sports = ["Cricket", "TT", "Football", "Hockey"]
 
-obj = Exercise.new(sports)
-print obj.skip_sports(1)
-print obj.skip_sports(2)
-print obj.skip_sports(3)
-print obj.skip_sports(4)
+# obj = Exercise.new(sports)
+# print obj.skip_sports(1)
+# print obj.skip_sports(2)
+# print obj.skip_sports(3)
+# print obj.skip_sports(4)
