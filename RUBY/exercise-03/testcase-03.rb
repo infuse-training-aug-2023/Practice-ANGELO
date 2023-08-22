@@ -19,14 +19,14 @@ class TestCheckHash < Test::Unit::TestCase
         objExercise = Exercise.new(@@hashValues)
         assert objExercise.instance_of? Exercise
     end
-    def test_isKeyinteger
+    def test_is_key_integer
         objExercise = Exercise.new(@@hashValues)
         actualOutput = [1, 2, 3, 4, 5, 7, 8, 543121]
         assert_equal(actualOutput, objExercise.isKeyinteger)
         # actualOutput2 =[1, 3, 5, 7, 543121]
         # assert_equal(actualOutput2, objExercise.isKeyinteger)
     end
-    def test_deleteEvenkeys
+    def test_delete_even_keys
         @hashValues = {
             1 => 10,
             2 => 20,
