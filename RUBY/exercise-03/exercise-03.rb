@@ -1,48 +1,28 @@
 class Exercise
-    def initialize(hashValues)
-        @hashValues = hashValues
+    def initialize(hash_values)
+        @hash_values = hash_values
     end
-    def hashValues=(hashValues)
-        @hashValues = hashValues
+    def hash_values=(hash_values)
+        @hash_values = hash_values
     end
-    def hashValues
-        return @hashValues
+    def hash_values
+        return @hash_values
     end
-    
-    def isKeyinteger
-        storeOutputkeys = []
-        hashValues.each_key do |key|
+    def is_key_integer
+        store_op_keys = []
+        hash_values.each_key do |key|
             if key.is_a?(Integer)
-                storeOutputkeys << key
+                store_op_keys << key
             end
         end
-        return storeOutputkeys
+        return store_op_keys
     end
-
-    def deleteEvenkeys
-        for key, value in hashValues.to_a
-            if key.is_a?(Integer) && key%2==0 
-                hashValues.delete(key)
+    def delete_even_keys
+        for key, value in hash_values.to_a
+            if key.is_a?(Integer) && key%2==0
+                hash_values.delete(key)
             end
         end
-        return hashValues
+        return hash_values
     end
 end
-
-# hashValues = {
-#     1 => 10,
-#     2 => 20,
-#     3 => 30,
-#     4 => 10,
-#     5 => 20,
-#     "6" => 30,
-#     7 => 10,
-#     8 => 20,
-#     "nine" => 30,
-#     543121 => 100
-# }
-
-# obj = Exercise.new(hashValues)
-# print obj.isKeyinteger()
-# puts
-# puts obj.deleteEvenkeys()
