@@ -1,16 +1,16 @@
-body{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
 }
 .container {
-    text-align: center;
-    font-family: Arial;
-  }
-.dark-mode{
-    background-color: black;
+	text-align: center;
+	font-family: Arial;
 }
-.clocktimefont{
-    color: white;
+.dark-mode {
+	background-color: black;
+}
+.clocktimefont {
+	color: white;
 }
