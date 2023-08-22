@@ -8,21 +8,12 @@ class Exercise
   def sports
       return @sports
   end
-
   def skip_sports(num)
-      updatedSports = []
+      updated_sports = []
       sports.each_with_index do |value, index|
         keyValue = "#{index}:#{value}"
-        updatedSports << keyValue
+        updated_sports << keyValue
       end
-      return updatedSports[num..]
+      return updated_sports[num..]
   end
 end
-
-# sports = ["Cricket", "TT", "Football", "Hockey"]
-
-# obj = Exercise.new(sports)
-# print obj.skip_sports(1)
-# print obj.skip_sports(2)
-# print obj.skip_sports(3)
-# print obj.skip_sports(4)

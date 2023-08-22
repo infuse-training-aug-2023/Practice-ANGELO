@@ -3,7 +3,6 @@ require_relative 'exercise-04'
 
 class TestSkipSports < Test::Unit::TestCase
     @@sports = ["Cricket", "TT", "Football", "Hockey"]
-
     def test_make_exercise_object
         objExercise = Exercise.new(@@sports)
         assert objExercise.instance_of? Exercise
