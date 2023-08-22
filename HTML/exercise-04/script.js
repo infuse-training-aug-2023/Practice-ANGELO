@@ -10,14 +10,11 @@ const user = {
 const printUserProfile = (user) => {
 	// Piyush Sharma is a Senior Software Engineer at Infuse Consulting. He likes Reading, Listening to music and Collecting stamps
 	const { name, designation, company, hobbies } = user;
-	let add_hobbies = "";
-	for (let each = 0; each < hobbies.length; each++) {
-		if (each == hobbies.length - 1) {
-			add_hobbies += "and " + hobbies[each];
-		} else {
-			add_hobbies += hobbies[each] + ", ";
-		}
-	}
+	let add_hobbies = `${hobbies.slice(0, hobbies.length - 1)} and ${
+		hobbies[hobbies.length - 1]
+	}`.replaceAll(",", ", ");
+
+	console.log(add_hobbies);
 	console.log(
 		`${name} is a ${designation} at ${company}. He likes ${add_hobbies}`
 	);
