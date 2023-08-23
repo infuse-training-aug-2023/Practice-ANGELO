@@ -1,33 +1,66 @@
 require "selenium-webdriver"
 Selenium::WebDriver::Edge::Service.driver_path = "C:/Users/angel/Desktop/browserDrivers/msedgedriver.exe"
-driver = Selenium::WebDriver.for :edge
-driver.manage.window.maximize
+# driver = Selenium::WebDriver.for :edge
 
-wait = Selenium::WebDriver::Wait.new(:timeout => 20)
-driver.get "https://practise.usemango.co.uk/"
+class AutomateWebsiteTesting
+  def initialize
+    $driver = Selenium::WebDriver.for :edge
+    $wait = Selenium::WebDriver::Wait.new(:timeout => 11)
+  end
 
-driver.find_element(:id, "products").click
-driver.find_element(:xpath, '//select[contains(.,"Low to highHigh to low")]').click
-driver.find_element(:xpath, '//option[.="High to low"]').click
-driver.find_element(:xpath, '//*[@id="root"]/div/div/div[1]/div[2]/select').click
-driver.find_element(:xpath, '//*[@id="root"]/div/div/div[1]/div[2]/select/option[2]').click
+  def open_website
+    $driver.manage.window.maximize
+    $driver.get "https://practise.usemango.co.uk/"
+  end
 
-driver.find_element(:xpath, 'id("root")/div/div/div[2]/div[1]/div/div/div/div/a[1]/i').click
-driver.find_element(:xpath, 'id("root")/div/div/div[2]/div[2]/div/div/div/div/a[2]/i').click
-driver.find_element(:xpath, 'id("root")/div/div/div[2]/div[3]/div/div/div/div/a[1]/i').click
+  def login_website
+    $driver.find_element(:link, "Login").click
+    $driver.find_element(:id, "exampleInputEmail1").send_keys "angelo"
+    $driver.find_element(:id, "exampleInputPassword1").send_keys "angelo"
+    $driver.find_element(:css, "button.btn.btn-dark").click
+  end
 
-wishlist = wait.until { driver.find_element(:link_text, "Wishlist") }
-wishlist.click()
-driver.find_element(:css, "div:nth-child(2).row.mt-2 > div:last-child.col-lg-2.col-md-3.col-12.col-sm-12.d-flex.flex-column.justify-content-center > div:first-child.btn.btn-success.btn-sm").click
+  def goto_products
+    # product = $wait.until{ $driver.find_element(:xpath, '//*[@id="products"]') }
+    product = $wait.until { $driver.find_element(:link_text, "Products") }
+    if product.displayed?
+      product.click
+    end
+    $driver.find_element(:xpath, '//select[contains(.,"Low to highHigh to low")]').click
+    $driver.find_element(:xpath, '//option[.="High to low"]').click
+  end
 
-cart = wait.until { driver.find_element(:link_text, "Cart") }
-if cart.displayed?
-  cart.click
+  def add_item_to_wishlist_and_cart
+    $driver.find_element(:xpath, 'id("root")/div/div/div[2]/div[1]/div/div/div/div/a[1]/i').click
+    $driver.find_element(:xpath, 'id("root")/div/div/div[2]/div[3]/div/div/div/div/a[1]/i').click
+    $driver.find_element(:xpath, 'id("root")/div/div/div[2]/div[2]/div/div/div/div/a[2]/i').click
+  end
+
+  def goto_wishlist
+    wishlist = $wait.until { $driver.find_element(:link_text, "Wishlist") }
+    if wishlist.displayed?
+      wishlist.click
+    end
+  end
+
+  def goto_cart
+    cart = $wait.until { $driver.find_element(:link_text, "Cart") }
+    if cart.displayed?
+      cart.click
+    end
+  end
+
+  def quit_driver
+    $driver.quit
+  end
 end
 
-driver.find_element(:link, "Login").click
-driver.find_element(:id, "exampleInputEmail1").send_keys "angelo"
-driver.find_element(:id, "exampleInputPassword1").send_keys "angelo"
-driver.find_element(:css, "button.btn.btn-dark").click
-
-driver.quit
+object = AutomateWebsiteTesting.new
+object.open_website
+object.login_website
+sleep(1)
+object.goto_products
+object.add_item_to_wishlist_and_cart
+object.goto_wishlist
+object.goto_cart
+object.quit_driver
