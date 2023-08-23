@@ -1,29 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  <title>OMDB Movies</title>
-</head>
-<body>
-  <div class="search-container">
-    <input type="text" id="searchInput" placeholder="Enter Movie Name">
-    <select id="sortName">
-      <option value="asc">Name (Ascending)</option>
-      <option value="desc">Name (Descending)</option>
-    </select>
-    <select id="sortYear">
-      <option value="asc">Year (Ascending)</option>
-      <option value="desc">Year (Descending)</option>
-    </select>
-    <button id="searchButton">Search</button>
-  </div>
-  <div class="pagination-buttons">
-    <button id="prevButton">Previous</button>
-    <button id="nextButton">Next</button>
-  </div>
-  <div class="movies-container" id="moviesContainer"></div>
-  <script src="script.js"></script>
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="style.css" />
+		<title>OMDB Movies</title>
+	</head>
+	<body>
+		<div class="search-container">
+			<input type="text" id="searchInput" placeholder="Enter Movie Name" />
+			<select id="sortValue">
+				<option value="ascname">Name (Ascending)</option>
+				<option value="descname">Name (Descending)</option>
+				<option value="ascyear">Year (Ascending)</option>
+				<option value="descyear">Year (Descending)</option>
+			</select>
+			<button id="searchButton">Search</button>
+		</div>
+		<div class="movies-container" id="moviesContainer"></div>
+		<div class="page-buttons">
+			<button id="prevButton">Previous</button>
+			<button id="nextButton">Next</button>
+		</div>
+		<script src="script.js"></script>
+	</body>
 </html>

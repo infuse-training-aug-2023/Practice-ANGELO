@@ -53,18 +53,18 @@ body {
 	border-radius: 5px;
 }
 
-#sortName,
-#sortYear {
+#sortValue {
 	padding: 10px;
 	border-radius: 5px;
 	color: grey;
 }
 
-.pagination-buttons {
+.page-buttons {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	gap: 20px;
+	padding: 20px;
 }
 #prevButton,
 #nextButton {
@@ -73,4 +73,11 @@ body {
 	color: #fff;
 	border: none;
 	border-radius: 5px;
+}
+#imdbButton {
+	margin-left: 10px;
+	padding: 5px;
+	border-radius: 5px;
+	color: grey;
+	border-color: lightgray;
 }
