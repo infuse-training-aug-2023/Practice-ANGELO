@@ -5,6 +5,11 @@ driver = Selenium::WebDriver.for :edge
 driver.get "https://testpages.herokuapp.com/styled/basic-html-form-test.html"
 
 dropdown_list = driver.find_element(:name, "dropdown")
-option_list = dropdown_list.find_elements(:tag_name, "option")[3]
-puts option_list.text
+
+click_dropdown = Selenium::WebDriver::Support::Select.new(dropdown_list)
+
+select_option = click_dropdown.options[3]
+select_option.click
+
+puts select_option.attribute("value")
 driver.quit
