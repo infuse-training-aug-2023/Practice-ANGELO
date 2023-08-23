@@ -6,8 +6,10 @@ wait = Selenium::WebDriver::Wait.new(:timeout => 11)
 
 driver.get "https://letcode.in/forms"
 
-dropdown_list = wait.until { driver.find_element(:css, "div:nth-child(5).columns.container > div:last-child.column.is-half > div.field > div.control") }
-option_list = wait.until { dropdown_list.find_elements(:tag_name, "option") }
+dropdown_list = wait.until { driver.find_element(:xpath, '//select[starts-with(.,"AfghanistanÅland IslandsAlbaniaAlgeriaAmerican")]') }
+click_dropdown = Selenium::WebDriver::Support::Select.new(dropdown_list)
+
+option_list = click_dropdown.options
 
 option_list.each do |values|
   puts values.text
