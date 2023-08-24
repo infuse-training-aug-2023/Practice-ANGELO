@@ -5,6 +5,7 @@ const sortValue = document.getElementById("sortValue");
 const moviesContainer = document.getElementById("moviesContainer");
 const nextButton = document.getElementById("nextButton");
 const prevButton = document.getElementById("prevButton");
+const displayIframe = document.getElementById("displayIframe");
 
 let currentPage = 1;
 let totalResults = 0;
@@ -13,7 +14,6 @@ let currentMovies = [];
 searchButton.onclick = () => {
 	const apiUrl = `https://www.omdbapi.com/?apikey=${apiKey}&s=${searchInput.value}&type=movie`;
 	currentPage = 1;
-	console.log(apiUrl);
 	fetchMovies(apiUrl);
 };
 
@@ -34,7 +34,8 @@ moviesContainer.onclick = () => {
 	if (moreInfobutton.id === "imdbButton") {
 		const buttonValue = moreInfobutton.value;
 		const imdbUrl = `https://www.imdb.com/title/${buttonValue}/`;
-		window.open(imdbUrl, "_blank");
+		displayIframe.contentWindow.postMessage(buttonValue, "*");
+		// window.open(imdbUrl, "_blank");
 	}
 };
 
@@ -44,7 +45,6 @@ async function fetchMovies(apiUrl) {
 		const response = await fetch(apiUrl);
 		const data = await response.json();
 		totalResults = data.totalResults;
-		console.log(data);
 
 		if (data.Search) {
 			data.Search.forEach((movie) => {
@@ -56,8 +56,6 @@ async function fetchMovies(apiUrl) {
 				}
 			});
 			currentMovies.push(movies);
-			console.log(movies);
-			console.log(currentMovies);
 			return sortMovies(movies);
 		} else {
 			throw new Error(`No movies found. Error: ${data.Error}`);
@@ -89,12 +87,11 @@ function displayMovies(movies) {
 		.join("");
 }
 
-function getPage(currentPage) {
+async function getPage(currentPage) {
 	try {
 		const url = `https://www.omdbapi.com/?apikey=${apiKey}&s=${searchInput.value}&page=${currentPage}&type=movie`;
-		fetchMovies(url).then((newMovies) => {
-			displayMovies(newMovies);
-		});
+		newMovies = await fetchMovies(url);
+		displayMovies(newMovies);
 	} catch (error) {
 		throw new Error(`Error: ${error.message}`);
 	}

@@ -4,7 +4,20 @@ body {
 	padding: 0;
 	background-color: rgb(42, 42, 42);
 }
+.container {
+	display: grid;
+	height: 100vh;
+	grid-template-columns: 69% 30%;
+	gap: 0.5%;
+}
 
+#displayIframe {
+	border: none;
+	border-radius: 8px;
+	display: flex;
+	height: 100%;
+	width: 100%;
+}
 .movies-container {
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));

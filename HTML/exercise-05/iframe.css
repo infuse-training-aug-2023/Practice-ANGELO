@@ -1,0 +1,21 @@
+.iframe-container {
+	background-color: rgb(142, 177, 177);
+	color: white;
+	padding: 5%;
+	border-radius: 5px;
+	font-size: larger;
+	font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+		"Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.iframe-container h2 {
+	display: flex;
+	justify-content: center;
+	font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.iframe-container img {
+	width: 100%;
+	height: auto;
+	border-radius: 8px;
+}
