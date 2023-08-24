@@ -1,0 +1,96 @@
+body {
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+	background-color: rgb(42, 42, 42);
+}
+.container {
+	display: grid;
+	height: 100vh;
+	grid-template-columns: 69% 30%;
+	gap: 0.5%;
+}
+
+#displayIframe {
+	border: none;
+	border-radius: 8px;
+	display: flex;
+	height: 100%;
+	width: 100%;
+}
+.movies-container {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+	gap: 20px;
+	padding: 20px;
+}
+.movie-card {
+	border: px solid #ddd;
+	padding: 10px;
+	background-color: #fff;
+	border-radius: 8px;
+}
+
+.movie-card img {
+	width: 100%;
+	height: auto;
+	border-radius: 8px;
+}
+
+.ellipsis {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.search-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 20px;
+	padding: 20px;
+	margin: 10px auto;
+}
+
+#searchInput {
+	padding: 10px;
+	border: 1px solid grey;
+	border-radius: 5px;
+}
+
+#searchButton {
+	padding: 10px 15px;
+	background-color: #007bff;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+}
+
+#sortValue {
+	padding: 10px;
+	border-radius: 5px;
+	color: grey;
+}
+
+.page-buttons {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 20px;
+	padding: 20px;
+}
+#prevButton,
+#nextButton {
+	padding: 10px 15px;
+	background-color: #008cff;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+}
+#imdbButton {
+	margin-left: 10px;
+	padding: 5px;
+	border-radius: 5px;
+	color: grey;
+	border-color: lightgray;
+}
