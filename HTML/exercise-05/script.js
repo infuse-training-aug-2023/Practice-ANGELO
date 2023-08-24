@@ -11,8 +11,7 @@ let totalResults = 0;
 let currentMovies = [];
 
 searchButton.onclick = () => {
-	const searchTerm = searchInput.value;
-	const apiUrl = `https://www.omdbapi.com/?apikey=${apiKey}&s=${searchTerm}&type=movie`;
+	const apiUrl = `https://www.omdbapi.com/?apikey=${apiKey}&s=${searchInput.value}&type=movie`;
 	currentPage = 1;
 	console.log(apiUrl);
 	fetchMovies(apiUrl);
@@ -53,10 +52,10 @@ async function fetchMovies(apiUrl) {
 					(m) => m.Title === movie.Title
 				);
 				if (!existingMovie) {
-					currentMovies.push(movie);
 					movies.push(movie);
 				}
 			});
+			currentMovies.push(movies);
 			console.log(movies);
 			console.log(currentMovies);
 			return sortMovies(movies);
@@ -92,7 +91,7 @@ function displayMovies(movies) {
 
 function getPage(currentPage) {
 	try {
-		const url = `https://www.omdbapi.com/?apikey=${apiKey}&s=${currentPage}&page=${currentPage}&type=movie`;
+		const url = `https://www.omdbapi.com/?apikey=${apiKey}&s=${searchInput.value}&page=${currentPage}&type=movie`;
 		fetchMovies(url).then((newMovies) => {
 			displayMovies(newMovies);
 		});
