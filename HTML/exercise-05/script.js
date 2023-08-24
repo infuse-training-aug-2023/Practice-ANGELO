@@ -35,7 +35,6 @@ moviesContainer.onclick = () => {
 		const buttonValue = moreInfobutton.value;
 		const imdbUrl = `https://www.imdb.com/title/${buttonValue}/`;
 		displayIframe.contentWindow.postMessage(buttonValue, "*");
-		// window.open(imdbUrl, "_blank");
 	}
 };
 
@@ -56,7 +55,7 @@ async function fetchMovies(apiUrl) {
 				}
 			});
 			currentMovies.push(movies);
-			return sortMovies(movies);
+			sortMovies(movies);
 		} else {
 			throw new Error(`No movies found. Error: ${data.Error}`);
 		}
@@ -91,7 +90,6 @@ async function getPage(currentPage) {
 	try {
 		const url = `https://www.omdbapi.com/?apikey=${apiKey}&s=${searchInput.value}&page=${currentPage}&type=movie`;
 		newMovies = await fetchMovies(url);
-		displayMovies(newMovies);
 	} catch (error) {
 		throw new Error(`Error: ${error.message}`);
 	}
