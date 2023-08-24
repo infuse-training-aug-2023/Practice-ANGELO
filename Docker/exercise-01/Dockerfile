@@ -3,4 +3,4 @@ WORKDIR  /app
 COPY . .
 RUN pip install -r requirements.txt
 ENV EXEC=true
-CMD ["python", "exercise01.py"]
+CMD ["python", "exercise01.py", "0", "1", "2", "3", "4", "5", "6", "7", "8" ]
