@@ -8,7 +8,7 @@ const formattedDate = moment(userInputDate, "YYYY-MM-DD").format("DD-MM-YYYY");
 console.log(`Formatted Date: ${formattedDate}`);
 
 axios
-	.get("https://jsonplaceholder.typicode.com/posts/1")
+	.get(process.env.URL)
 	.then((response) => {
 		console.log("API Response: ");
 		console.log(response.data);
