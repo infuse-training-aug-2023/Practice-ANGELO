@@ -9,15 +9,15 @@ class TestBase64Encode < Test::Unit::TestCase
 
   def test_write_content
     object_exercise = Exercise.new
-    content, file_path = object_exercise.write_content
-    output = File.open(file_path,'r')
+    content, file_name = object_exercise.write_content()
+    output = File.read(file_name)
     assert_equal(content, output)
   end
 
   def test_base64_encode
     object_exercise = Exercise.new
     object_exercise.base64_encode
-    expected_output = File.read("RUBY/exercise-06/content2.txt")
+    expected_output = File.read("RUBY/exercise-06/content.txt")
     actual_output = File.read("RUBY/exercise-06/Angelo.txt")
     assert_not_equal(actual_output, expected_output)
   end
