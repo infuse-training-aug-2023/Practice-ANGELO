@@ -1,7 +1,15 @@
 const axios = require("axios");
 const moment = require("moment");
 
-const userInputDate = process.argv[2];
+let userInputDate;
+
+if (process.argv.length < 3) {
+	userInputDate = moment().format("YYYY-MM-DD");
+	console.log(`Using today's date as default date: ${userInputDate}`);
+} else {
+	userInputDate = process.argv[2];
+	console.log(`Entered date: ${userInputDate}`);
+}
 
 const formattedDate = moment(userInputDate, "YYYY-MM-DD").format("DD-MM-YYYY");
 
