@@ -1,6 +1,11 @@
 FROM python:3
+
 WORKDIR  /app
+
 COPY . .
+
 RUN pip install -r requirements.txt
+
 ENV EXEC=true
-CMD ["python", "exercise01.py", "0", "1", "2", "3", "4", "5", "6", "7", "8" ]
+
+CMD ["python", "exercise01.py", "3","3"]

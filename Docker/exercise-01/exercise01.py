@@ -4,12 +4,17 @@ import sys
 import numpy as np
 from PIL import Image
 
-array1 = np.array(list(map(lambda i: int(sys.argv[i]), range(1, len(sys.argv)))))
+# array1 = np.array(list(map(lambda i: int(sys.argv[i]), range(1, len(sys.argv)))))
+array1 = np.array(range(1, 10))
 print("The original array: ", array1)
-array2 = array1.reshape(3, 3)
+
+if len(sys.argv) == 4:
+    array2 = array1.reshape(int(sys.argv[2]), int(sys.argv[3]))
+else:
+    array2 = array1.reshape(3, 3)
 print("The modified array: \n", array2)
 
-if os.environ.get('EXEC'):
+if os.environ.get("EXEC"):
     try:
         image = Image.open("dog.jpg")
         rgb_image = np.array(image)
